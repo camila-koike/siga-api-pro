@@ -8,10 +8,13 @@ import { ProfessoresModule } from './professores/professores.module';
 import { EstudantesModule } from './estudantes/estudantes.module';
 import { DisciplinasModule } from './disciplinas/disciplinas.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
-  imports: [UsuariosModule, MatriculasModule, JogosModule, ProfessoresModule, EstudantesModule, DisciplinasModule, AuthModule],
+  imports: [ ConfigModule.forRoot({
+      isGlobal: true, // ✅ Torna disponível em todos os módulos
+    }),UsuariosModule, MatriculasModule, JogosModule, ProfessoresModule, EstudantesModule, DisciplinasModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
