@@ -14,7 +14,7 @@ export class UsuariosService {
   constructor(private prisma: PrismaService) {}
 
   async findByEmail(email: string) {
-    return await this.prisma.usuario.findMany({
+    return await this.prisma.usuario.findFirst({
       where: { email },
     });
   }
