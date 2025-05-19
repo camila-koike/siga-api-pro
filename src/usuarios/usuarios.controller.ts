@@ -6,9 +6,10 @@ import {
     Body,        // Captura o corpo da requisição (dados enviados via POST/PUT)
     Param,       // Captura parâmetros da URL (ex: /usuarios/:id)
     Put,         // Define rotas PUT (atualizar dados)
-    Delete       // Define rotas DELETE (remover dados)
+    Delete ,      // Define rotas DELETE (remover dados)
+    UseGuards 
   } from '@nestjs/common';
-  
+  import { AuthGuard } from '@nestjs/passport';
   // Importa o serviço de usuários, que contém a lógica de negócio
   import { UsuariosService } from './usuarios.service';
   
@@ -26,12 +27,17 @@ import {
       return this.usuariosService.create(body);
     }
   
-    // Rota GET /usuarios → lista todos os usuários
+    // // Rota GET /usuarios → lista todos os usuários
+    // @Get()
+    // findAll() {
+    //   // Chama o método findAll() do service para retornar todos os usuários
+    //   return this.usuariosService.findAll();
+    // }
+    @UseGuards(AuthGuard('jwt'))
     @Get()
-    findAll() {
-      // Chama o método findAll() do service para retornar todos os usuários
-      return this.usuariosService.findAll();
-    }
+  async findAllSafe() {
+    return this.usuariosService.findAllSafe();
+  }
   
     // Rota GET /usuarios/:id → busca um usuário específico por ID
     @Get(':id')

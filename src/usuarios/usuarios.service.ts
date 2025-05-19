@@ -3,13 +3,26 @@ import { Injectable } from '@nestjs/common';
 
 // Importa o PrismaClient, que é o cliente gerado pelo Prisma para interagir com o banco de dados
 import { PrismaClient } from '@prisma/client';
+import { PrismaService } from '../prisma.service';
 
 // Cria uma instância do PrismaClient para acessar o banco
 const prisma = new PrismaClient();
 
 // Marca essa classe como um "serviço injetável" no NestJS
 @Injectable()
-export class UsuariosService {
+export class UsuariosService {  
+  constructor(private prisma: PrismaService) {}
+
+  async findByEmail(email: string) {
+    return await this.prisma.usuario.findMany({
+      where: { email },
+    });
+  }
+
+  async findAllSafe() {
+    const usuarios = await this.prisma.usuario.findMany();
+    return usuarios.map(({ senha, ...rest }) => rest);
+  }
 
   // Método para criar um novo usuário no banco de dados
   async create(data: any) {

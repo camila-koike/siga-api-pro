@@ -67,6 +67,12 @@ CREATE TABLE "matricula_se" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "usuarios_cpf_key" ON "usuarios"("cpf");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "usuarios_email_key" ON "usuarios"("email");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "professores_siape_key" ON "professores"("siape");
 
 -- CreateIndex
