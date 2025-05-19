@@ -13,7 +13,7 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [ ConfigModule.forRoot({
-      isGlobal: true, // ✅ Torna disponível em todos os módulos
+      isGlobal: true, // <- Parra Aqui Tornar disponível em todos os módulos
     }),UsuariosModule, MatriculasModule, JogosModule, ProfessoresModule, EstudantesModule, DisciplinasModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
