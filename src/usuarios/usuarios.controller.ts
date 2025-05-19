@@ -27,17 +27,17 @@ import {
       return this.usuariosService.create(body);
     }
   
-    // Rota GET /usuarios → lista todos os usuários
+    // // Rota GET /usuarios → lista todos os usuários
+    // @Get()
+    // findAll() {
+    //   // Chama o método findAll() do service para retornar todos os usuários
+    //   return this.usuariosService.findAll();
+    // }
+    @UseGuards(AuthGuard('jwt'))
     @Get()
-    findAll() {
-      // Chama o método findAll() do service para retornar todos os usuários
-      return this.usuariosService.findAll();
-    }
-  //   @UseGuards(AuthGuard('jwt'))
-  //   @Get()
-  // async findAllSafe() {
-  //   return this.usuariosService.findAllSafe();
-  // }
+  async findAllSafe() {
+    return this.usuariosService.findAllSafe();
+  }
   
     // Rota GET /usuarios/:id → busca um usuário específico por ID
     @Get(':id')
