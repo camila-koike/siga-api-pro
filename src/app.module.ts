@@ -7,10 +7,10 @@ import { JogosModule } from './jogos/jogos.module';
 import { ProfessoresModule } from './professores/professores.module';
 import { EstudantesModule } from './estudantes/estudantes.module';
 import { DisciplinasModule } from './disciplinas/disciplinas.module';
-import { AuthModule } from './auth/auth.module';
+
 
 @Module({
-  imports: [UsuariosModule, MatriculasModule, JogosModule, ProfessoresModule, EstudantesModule, DisciplinasModule, AuthModule],
+  imports: [UsuariosModule, MatriculasModule, JogosModule, ProfessoresModule, EstudantesModule, DisciplinasModule],
   controllers: [AppController],
   providers: [AppService],
 })
