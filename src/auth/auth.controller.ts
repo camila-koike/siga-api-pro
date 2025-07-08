@@ -12,6 +12,7 @@ export class AuthController {
       return { message: 'Credenciais inválidas' };
     }
     return this.authService.login(user);
+    
   }
 }
 

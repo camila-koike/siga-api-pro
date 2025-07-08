@@ -41,9 +41,12 @@ export class AuthService {
     const payload = { email: user.email, sub: user.id };
 
     // Retorna um objeto contendo o token de acesso (access_token)
-    return {
-      access_token: this.jwtService.sign(payload), // Gera e assina o token com base no payload
-      user,
-    };
+     const result = {
+    access_token: this.jwtService.sign(payload),
+    user,
+  };
+
+  console.log('🚀 Retornando do AuthService:', result);
+  return result;
   }
 }
